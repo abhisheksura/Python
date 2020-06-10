@@ -98,7 +98,8 @@ def moveZeroes(self, nums: List[int]) -> None:
     
 # LeetCode #287 - Find the Duplicate Number
 """
-Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
+Given an array nums containing n + 1 integers where each integer is between 1 and n (inclusive), 
+prove that at least one duplicate number must exist. Assume that there is only one duplicate number, find the duplicate one.
 
 Example 1:
 
@@ -127,8 +128,30 @@ def findDuplicate(self, nums: List[int]) -> int:
         else:
             return nums[i]
     return -1
-    
-    
+
+
+# LeetCode #136 -Single Number
+# https://leetcode.com/problems/single-number/
+"""
+Given a non-empty array of integers, every element appears twice except for one. Find that single one.
+Example 1:
+
+Input: [2,2,1]
+Output: 1
+
+Example 2:
+
+Input: [4,1,2,1,2]
+Output: 4
+"""
+# TC - O(N) & SC - O(1) using XOR operation
+def singleNumber(self, nums: List[int]) -> int:
+    a = nums[0]
+    for i in range(1, len(nums)):
+        a ^= nums[i]
+    return a
+
+
 # LeetCode #344 - Reverse String
 def reverseString(self, s: List[str]) -> None:
     """
