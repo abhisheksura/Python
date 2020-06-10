@@ -110,15 +110,23 @@ Example 2:
 Input: [3,1,3,4,2]
 Output: 3
 """
+# Using Sorting - TC - O(nlogN) & SC - O(1) or O(N) to store the copy of array as it is readable
 def findDuplicate(self, nums: List[int]) -> int:
-    index = 0
     nums.sort()
     for i in range(len(nums)):
-        if nums[index] != nums[i]:
-            nums[index] = nums[i]
-            index += 1
+        if nums[i] == nums[i-1]:                
+            return nums[i]
+    return -1
 
-    return index
+# Using set TC - O(n) and SC - O(n) to store the elements in set
+def findDuplicate(self, nums: List[int]) -> int:
+    hash_set = set()
+    for i in range(len(nums)):
+        if nums[i] not in hash_set:                
+            hash_set.add(nums[i])
+        else:
+            return nums[i]
+    return -1
     
     
 # LeetCode #344 - Reverse String
