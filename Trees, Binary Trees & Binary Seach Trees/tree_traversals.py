@@ -40,3 +40,20 @@ class BinaryTree:
                 level.append(curr.val)
             bfs.append(level)
         return bfs
+        
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        # Iterative method using Stack
+        stack = []
+        traversal = []
+        current = root
+        while True:
+            if current is not None:
+                stack.append(current)
+                current = current.left
+            elif stack:
+                current = stack.pop()
+                traversal.append(current.val)
+                current = current.right
+            else:
+                break
+        return traversal
