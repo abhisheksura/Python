@@ -18,3 +18,22 @@ class Binary Tree:
             self.invertTree(root.right)
             
         return root
+    
+"""
+    LeetCode #100 - Same Tree
+    https://leetcode.com/problems/same-tree/
+    
+    TC - O(N) No of nodes
+    SC - O(logN) Best case & O(N) Worst Case unbalanced tree to keep recursion stack
+"""
+    def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
+        if p is None and q is None:
+            return True
+        
+        if (p and q is None) or (p is None and q):
+            return False
+        
+        if p.val != q.val:
+            return False
+        
+        return self.isSameTree(p.left, q.left) and self.isSameTree(p.right, q.right)
