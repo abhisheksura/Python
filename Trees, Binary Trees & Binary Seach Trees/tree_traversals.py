@@ -46,14 +46,12 @@ class BinaryTree:
         stack = []
         traversal = []
         current = root
-        while True:
+        while current is not None or stack:
             if current is not None:
                 stack.append(current)
                 current = current.left
-            elif stack:
+            else:
                 current = stack.pop()
                 traversal.append(current.val)
                 current = current.right
-            else:
-                break
         return traversal
