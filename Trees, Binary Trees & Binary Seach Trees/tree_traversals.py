@@ -71,3 +71,24 @@ class BinaryTree:
             if current.left:
                 stack.append(current.left)            
         return traversal
+
+    def postorderTraversal(self, root: TreeNode) -> List[int]:
+        if root is None:
+            return
+        
+        first, second = [], []
+        traversal = []
+        
+        first.append(root)
+        while first:
+            current = first.pop()
+            second.append(current.val)
+            
+            if current.left:
+                first.append(current.left)
+            if current.right:
+                first.append(current.right)
+                
+        while second:
+            traversal.append(second.pop())
+        return traversal
