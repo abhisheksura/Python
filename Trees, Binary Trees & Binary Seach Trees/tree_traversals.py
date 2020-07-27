@@ -55,3 +55,19 @@ class BinaryTree:
                 traversal.append(current.val)
                 current = current.right
         return traversal
+    
+    def preorderTraversal(self, root: TreeNode) -> List[int]:
+        if root is None:
+            return
+        traversal = []
+        stack = []
+        stack.append(root)
+        
+        while stack:
+            current = stack.pop()
+            traversal.append(current.val)
+            if current.right:
+                stack.append(current.right)
+            if current.left:
+                stack.append(current.left)            
+        return traversal
