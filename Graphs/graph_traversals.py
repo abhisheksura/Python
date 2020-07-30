@@ -54,6 +54,19 @@ class Graph:
                 if adj not in visited:
                     queue.append(adj)
 
+    def dfs_disconnected_graph(self):
+        visited = set()
+        for v in self.graph:
+            # if the vertex is not visited then traverse dfs for tht vertex
+            if v not in visited:
+                self.dfs(v, visited)
+
+    def bfs_disconnected_graph(self):
+        visited = set()
+        for v in self.graph:
+            # if the vertex is not visited then traverse bfs for tht graph
+            if v not in visited:
+                self.bfs(v, visited)
 
 g = Graph()
 g.add_edge(1,2)
@@ -67,3 +80,6 @@ g.add_edge(5,6)
 # Start traversal from vertex 1
 g.dfs(1,set())
 g.bfs(1,set())
+
+g.dfs_disconnected_graph()
+g.bfs_disconnected_graph()
