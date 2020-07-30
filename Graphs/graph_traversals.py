@@ -54,6 +54,7 @@ class Graph:
                 if adj not in visited:
                     queue.append(adj)
 
+    # for handling disconnected graph
     def dfs_disconnected_graph(self):
         visited = set()
         for v in self.graph:
@@ -67,6 +68,22 @@ class Graph:
             # if the vertex is not visited then traverse bfs for tht graph
             if v not in visited:
                 self.bfs(v, visited)
+
+    def dfs_recursive(self, v, visited):
+        visited.add(v)
+        print(v, end='')
+        
+        for v in self.graph[v]:
+            if v not in visited:
+                self.dfs_recursive(v, visited)
+
+    # for handling disconnected graph for recursive approach is same as iterative approach
+    def dfs_recursive_disconnected(self):
+        visited = set()
+        for v in self.graph:
+            if v not in visited:
+                self.dfs_recursive(v, visited)
+        # [self.dfs_recursive(v, visited) for v in self.graph if v not in visited]
 
 g = Graph()
 g.add_edge(1,2)
@@ -83,3 +100,6 @@ g.bfs(1,set())
 
 g.dfs_disconnected_graph()
 g.bfs_disconnected_graph()
+
+g.dfs_recursive(1, set())
+g.dfs_recursive_disconnected()
